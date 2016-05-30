@@ -9,6 +9,8 @@
 import UIKit
 
 class ViewController: UIViewController, UITableViewDelegate {
+    
+    var cellContent = ["Bacon", "Cheese", "Lettuce", "Avocado"]
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,16 +21,17 @@ class ViewController: UIViewController, UITableViewDelegate {
     // defines number of rows
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 3
+        return cellContent.count
         
     }
     
     // defines content for each cell
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         
-        let cell = UITableViewCellStyle(rawValue: UITableViewCellStyle.Default)
+
+        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "Cell")
         
-        cell.textLabel?.text = "Test"
+        cell.textLabel?.text = cellContent[indexPath.row]
         
         return cell
     
